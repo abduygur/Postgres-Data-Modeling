@@ -57,10 +57,14 @@ def process_log_file(cur, filepath):
     t = pd.Series(df['ts'])
     
     # insert time data records
-    time_data = [t.dt.time, t.dt.hour, t.dt.day_name(), t.dt.isocalendar().week, t.dt.month, t.dt.year, t.dt.weekday]
 
     column_labels = ["start_time", "hour", "day", "week", "month", "year", "weekday"]
-    time_df = pd.DataFrame.from_records(time_data).transpose()
+
+    time_list = []
+    for time in t:
+        time_list.append([time, time.hour, time.day, time.weekofyear, time.month, time.year, time.day_name()])
+
+    time_df = pd.DataFrame.from_records(time_list, columns=column_labels)
 
     for i, row in time_df.iterrows():
         cur.execute(time_table_insert, list(row))
