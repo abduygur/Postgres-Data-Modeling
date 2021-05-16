@@ -17,12 +17,21 @@ The log data and metadata are storing in JSON files. In this case data modeled i
 ## ETL Pipeline
  - Process Data in both song_data and log_data directories using **Python** and **SQL**
 
+## Files
+    .
+    |-- create_tables.py ====> Create Dimension and Fact Tables with Postgre SQL
+    |-- data ================> Songs and Log Data in JSON Format
+    |-- etl.ipynb ===========> ETL Scripts Notebook for test
+    |-- etl.py ==============> ETL Scripts
+    |-- sql_queries.py ======> All CREATE, INSERT and SELECT queries
+    |-- test.ipynb ==========> Notebook for testing the ETL Scripts run correctly or not
 
 ## Libraries
     os
     glob
     psycopg2
     pandas
+
 
 ## How to Run
 
